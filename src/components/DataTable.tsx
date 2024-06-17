@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import {
     ColumnDef,
     flexRender,
@@ -14,6 +15,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import {columns, Payment} from "@/components/columns";
 
 
 export const payments: Payment[] = [
@@ -28,28 +30,6 @@ export const payments: Payment[] = [
         amount: 125,
         status: "processing",
         email: "example@gmail.com",
-    },
-]
-
-export type Payment = {
-    id: string
-    amount: number
-    status: "pending" | "processing" | "success" | "failed"
-    email: string
-}
-
-export const columns: ColumnDef<Payment>[] = [
-    {
-        accessorKey: "status",
-        header: "Status",
-    },
-    {
-        accessorKey: "email",
-        header: "Email",
-    },
-    {
-        accessorKey: "amount",
-        header: "Amount",
     },
 ]
 
@@ -112,28 +92,6 @@ export function DataTable<TData, TValue>({
                     )}
                 </TableBody>
             </Table>
-        </div>
-    )
-}
-
-async function getData(): Promise<Payment[]> {
-    // Fetch data from your API here.
-    return [
-        {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-    ]
-}
-
-export default async function DemoPage() {
-    const data = await getData()
-
-    return (
-        <div className="container mx-auto py-10">
-            <DataTable columns={columns} data={data} />
         </div>
     )
 }

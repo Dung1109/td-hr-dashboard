@@ -1,7 +1,8 @@
 "use client";
 
 import {FormDialog} from "@/components/FormDialog";
-import DemoPage from "@/components/DataTable";
+import DataTablePage from "@/components/DataTablePage";
+import {Suspense} from "react";
 
 export default function UsersPage(props: any) {
 
@@ -9,7 +10,9 @@ export default function UsersPage(props: any) {
         <main>
             <h1>Users</h1>
             <FormDialog/>
-            <DemoPage />
+            <Suspense>
+                <DataTablePage/>
+            </Suspense>
         </main>
     );
 };
